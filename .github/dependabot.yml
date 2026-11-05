@@ -6,6 +6,13 @@ updates:
   - package-ecosystem: docker         # Hugo + nginx base images
     directory: /
     schedule: { interval: weekly }
+    ignore:
+      # Hugo must stay within Blowfish's supported range → bump together with the theme, manually
+      - dependency-name: gohugoio/hugo
+        update-types: ["version-update:semver-minor", "version-update:semver-major"]
+      # nginx: even minor = stable, odd = mainline → bump manually to the next stable
+      - dependency-name: nginxinc/nginx-unprivileged
+        update-types: ["version-update:semver-minor", "version-update:semver-major"]
   - package-ecosystem: github-actions
     directory: /
     schedule: { interval: weekly }
