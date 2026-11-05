@@ -16,12 +16,12 @@ robots: "noindex"
 **Angaben gemäß § 5 DDG**
 
 Christian Browers
-[STRASSE HAUSNUMMER]
-[PLZ ORT]
+Racine Weg 5
+76532 Baden-Baden
 Deutschland
 
 **Kontakt**
-E-Mail: [E-MAIL-ADRESSE]
+E-Mail: christian@browers.info
 
 **Verantwortlich für den Inhalt nach § 18 Abs. 2 MStV**
 Christian Browers, Anschrift wie oben
