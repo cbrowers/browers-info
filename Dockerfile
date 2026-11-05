@@ -3,6 +3,12 @@
 # Hugo version must stay within Blowfish's supported range (see theme release notes).
 FROM ghcr.io/gohugoio/hugo:v0.167.0 AS build
 COPY --chown=hugo:hugo . /project
+# Build metadata shown in the footer (set by CI; defaults for local builds).
+# Hugo maps HUGO_PARAMS_* env vars to .Site.Params.*
+ARG BUILD_SHA=""
+ARG BUILD_DATE=""
+ENV HUGO_PARAMS_BUILDSHA=$BUILD_SHA \
+    HUGO_PARAMS_BUILDDATE=$BUILD_DATE
 RUN hugo --gc --minify --environment production
 
 # ── Serve ────────────────────────────────────────────────────────────────

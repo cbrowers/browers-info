@@ -1,0 +1,10 @@
+{{/* Build info injected by CI (HUGO_PARAMS_BUILDSHA / HUGO_PARAMS_BUILDDATE, see Dockerfile + workflow) */}}
+<p class="pt-2 text-xs text-neutral-500 dark:text-neutral-400">
+  {{ with site.Params.buildsha }}
+    Build
+    <a class="hover:underline" href="https://github.com/cbrowers/browers-info/commit/{{ . }}" target="_blank" rel="noopener">{{ substr . 0 7 }}</a>
+    {{ with site.Params.builddate }}· pushed {{ . }}{{ end }}
+  {{ else }}
+    Local build
+  {{ end }}
+</p>
