@@ -6,7 +6,7 @@ COPY --chown=hugo:hugo . /project
 RUN hugo --gc --minify --environment production
 
 # ── Serve ────────────────────────────────────────────────────────────────
-FROM nginxinc/nginx-unprivileged:1.30-alpine
+FROM nginxinc/nginx-unprivileged:1.31-alpine
 LABEL org.opencontainers.image.source="https://github.com/cbrowers/browers-info" \
       org.opencontainers.image.description="www.browers.info static blog"
 COPY nginx.conf /etc/nginx/conf.d/default.conf
