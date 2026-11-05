@@ -1,7 +1,7 @@
 # syntax=docker/dockerfile:1
 # ── Build ────────────────────────────────────────────────────────────────
 # Hugo version must stay within Blowfish's supported range (see theme release notes).
-FROM ghcr.io/gohugoio/hugo:v0.167.0 AS build
+FROM ghcr.io/gohugoio/hugo:v0.169.0 AS build
 COPY --chown=hugo:hugo . /project
 RUN hugo --gc --minify --environment production
 
