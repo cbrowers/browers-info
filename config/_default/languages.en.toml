@@ -22,7 +22,7 @@ title = "Christian Browers"
   bio = "I write about building and running AI/ML systems: tutorials, architecture and strategy."
   links = [
     { github = "https://github.com/cbrowers" },
-    # { linkedin = "https://linkedin.com/in/TODO" },
+    { linkedin = "https://www.linkedin.com/in/christianbrowers/" },
   ]
 
 # Full list of supported link icons (reference):
