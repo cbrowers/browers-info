@@ -1,0 +1,7 @@
+.git
+public
+resources/_gen
+.hugo_build.lock
+.github
+*.md.bak
+.DS_Store

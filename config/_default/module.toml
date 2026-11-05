@@ -1,0 +1,4 @@
+# Blowfish is pulled as a Hugo module (pinned in go.mod / go.sum).
+# Update: hugo mod get github.com/nunocoracao/blowfish/v3@<tag>   (or merge the Dependabot PR)
+[[imports]]
+  path = "github.com/nunocoracao/blowfish/v3"
