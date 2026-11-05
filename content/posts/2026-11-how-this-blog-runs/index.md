@@ -1,7 +1,7 @@
 ---
 title: "How this blog runs: Markdown in Git, a tiny container, and a pull-based deploy"
 date: 2026-11-05
-draft: true
+draft: false
 summary: "The setup behind browers.info: Hugo and Blowfish, a hardened nginx container next to other self-hosted services, and a deploy pipeline that needs no inbound access to the server."
 tags: ["hugo", "docker", "github-actions", "devops", "self-hosting"]
 ---
