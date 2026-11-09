@@ -1,0 +1,26 @@
+/*
+ * Site-wide background (dark mode only for now).
+ * Fixed layer behind all content; replaces Blowfish's backgroundCanvas so we
+ * can use per-theme images without its 75%/60% wash.
+ * Images: static/img/bg/ — WebP (~18 KB, cwebp -q 75) with JPEG fallback (~95 KB).
+ * Don't encode AVIF with macOS sips: Chrome can't decode its output and
+ * image-set does not fall back on decode errors.
+ * TODO: add glass-light.* for light mode and glass-*-mobile.* (9:16) for
+ *       portrait screens once generated.
+ */
+html.dark body::before {
+  content: "";
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+  background-color: #0f172a;
+  background-position: center;
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url("/img/bg/glass-dark.jpg");
+  background-image: image-set(
+    url("/img/bg/glass-dark.webp") type("image/webp"),
+    url("/img/bg/glass-dark.jpg") type("image/jpeg")
+  );
+}
