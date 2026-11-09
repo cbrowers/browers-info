@@ -51,6 +51,18 @@ html.dark body::before {
   --panel-blur: 6px;
   --panel-opacity-light: 0.78;
   --panel-opacity-dark: 0.8;
+
+  /* Shared surface: content panel, sticky header and menu all use these,
+     so they read as one layer above the background image. */
+  --surface-bg: rgba(var(--color-neutral), var(--panel-opacity-light));
+  --surface-bg-solid: rgba(var(--color-neutral), 0.97);
+  --surface-edge: rgba(var(--color-neutral-900), 0.08);
+}
+
+html.dark {
+  --surface-bg: rgba(var(--color-neutral-800), var(--panel-opacity-dark));
+  --surface-bg-solid: rgba(var(--color-neutral-800), 0.98);
+  --surface-edge: rgba(var(--color-neutral-50), 0.08);
 }
 
 body > div:has(> #main-content)::before {
@@ -60,11 +72,34 @@ body > div:has(> #main-content)::before {
   z-index: -1;
   pointer-events: none;
   border-radius: var(--panel-radius);
-  background-color: rgba(var(--color-neutral), var(--panel-opacity-light));
+  background-color: var(--surface-bg);
   -webkit-backdrop-filter: blur(var(--panel-blur));
   backdrop-filter: blur(var(--panel-blur));
 }
 
-html.dark body > div:has(> #main-content)::before {
-  background-color: rgba(var(--color-neutral-800), var(--panel-opacity-dark));
+/*
+ * Sticky header (header.layout = "fixed-fill-blur"): Blowfish fades #menu-blur
+ * in on scroll with a primary-tinted, saturated glass. Use the same neutral
+ * surface as the content panel instead; accent colour stays for links only.
+ * A hairline + soft shadow separates it from content scrolling underneath.
+ */
+#menu-blur {
+  background-color: var(--surface-bg);
+  background-image: none;
+  -webkit-backdrop-filter: blur(var(--panel-blur));
+  backdrop-filter: blur(var(--panel-blur));
+  border-bottom: 1px solid var(--surface-edge);
+  box-shadow: 0 4px 16px -8px rgba(0, 0, 0, 0.18);
+}
+
+/* Full-screen mobile menu and its close button: same surface, near-opaque
+   so the menu links stay readable over the page. */
+#mobile-menu-dialog {
+  background-color: var(--surface-bg-solid);
+  -webkit-backdrop-filter: blur(var(--panel-blur));
+  backdrop-filter: blur(var(--panel-blur));
+}
+
+#mobile-menu-dialog label[for="mobile-menu-toggle"] {
+  background-color: var(--surface-bg-solid);
 }
