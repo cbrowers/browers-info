@@ -125,7 +125,19 @@ port_in_redirect off;
 
 ## What it costs to run
 
-The blog uses a few megabytes of RAM on a server that was already running. The only recurring cost is the domain. Builds run on GitHub's free tier for public repositories.
+The whole server is a Hetzner **CX23**: 2 vCPUs, 4 GB of RAM and 40 GB of disk for **€5.49 per month**. The blog shares it with Paperless-ngx (my document archive), the reverse proxy and a few other small services.
+
+This is what the blog actually uses, measured on the running server:
+
+| Resource | Blog container | Whole server | Blog's share |
+|---|---|---|---|
+| RAM | ~3.7 MiB | 3,814 MiB | ~0.1 % |
+| CPU (idle, sampled) | 0.00 % | 2 vCPUs | effectively zero |
+| Disk (image) | ~99 MB, of which 6.3 MB is the site itself | 38 GB | ~0.25 % |
+
+For comparison, Paperless-ngx on the same machine uses about 716 MiB of RAM, roughly 200 times as much as the blog. The 64 MB memory limit from the compose file is about 17 times what nginx needs to serve these files.
+
+If you split the server bill by RAM, the blog costs about **half a cent per month**. In practice it costs nothing extra: it runs on a server I was already paying for. The only additional recurring cost is the domain, and builds run on GitHub's free tier for public repositories.
 
 ## What's next
 
