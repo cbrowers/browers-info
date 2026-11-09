@@ -1,17 +1,45 @@
-{{/* giscus — comments stored in GitHub Discussions of cbrowers/browers-info (category "Comments") */}}
-<script src="https://giscus.app/client.js"
-        data-repo="cbrowers/browers-info"
-        data-repo-id="R_kgDOVj3Opg"
-        data-category="Comments"
-        data-category-id="DIC_kwDOVj3Ops4DKcVE"
-        data-mapping="pathname"
-        data-strict="1"
-        data-reactions-enabled="1"
-        data-emit-metadata="0"
-        data-input-position="top"
-        data-theme="preferred_color_scheme"
-        data-lang="en"
-        data-loading="lazy"
-        crossorigin="anonymous"
-        async>
+{{/*
+  giscus — comments stored in GitHub Discussions of cbrowers/browers-info (category "Comments").
+  Custom themes in static/giscus/{light,dark}.css match the site; the script picks the one
+  matching Blowfish's current appearance and switches when the visitor toggles light/dark.
+  ?v=<build sha> busts giscus' cache of the theme CSS after each deploy.
+*/}}
+{{ $v := site.Params.buildsha | default "dev" }}
+{{ $light := printf "%s?v=%s" ("giscus/light.css" | absURL) $v }}
+{{ $dark := printf "%s?v=%s" ("giscus/dark.css" | absURL) $v }}
+<div id="giscus-container"></div>
+<script>
+  (function () {
+    var themes = { light: {{ $light }}, dark: {{ $dark }} };
+    var root = document.documentElement;
+    function current() { return root.classList.contains("dark") ? themes.dark : themes.light; }
+
+    var s = document.createElement("script");
+    s.src = "https://giscus.app/client.js";
+    s.async = true;
+    s.crossOrigin = "anonymous";
+    var attrs = {
+      "data-repo": "cbrowers/browers-info",
+      "data-repo-id": "R_kgDOVj3Opg",
+      "data-category": "Comments",
+      "data-category-id": "DIC_kwDOVj3Ops4DKcVE",
+      "data-mapping": "pathname",
+      "data-strict": "1",
+      "data-reactions-enabled": "1",
+      "data-emit-metadata": "0",
+      "data-input-position": "top",
+      "data-theme": current(),
+      "data-lang": "en",
+      "data-loading": "lazy"
+    };
+    for (var k in attrs) s.setAttribute(k, attrs[k]);
+    document.getElementById("giscus-container").appendChild(s);
+
+    // Follow Blowfish's appearance toggle (it flips the "dark" class on <html>).
+    new MutationObserver(function () {
+      var frame = document.querySelector("iframe.giscus-frame");
+      if (!frame) return;
+      frame.contentWindow.postMessage({ giscus: { setConfig: { theme: current() } } }, "https://giscus.app");
+    }).observe(root, { attributes: true, attributeFilter: ["class"] });
+  })();
 </script>

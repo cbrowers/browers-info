@@ -1,0 +1,58 @@
+/* giscus theme matching browers.info (Blowfish "blowfish" scheme, light).
+ * Base: giscus light theme; overrides use Blowfish's slate neutrals + blue primary.
+ * Backgrounds are translucent so the page's readability panel shows through. */
+@import url("https://giscus.app/themes/light.css");
+
+main {
+  /* text */
+  --color-fg-default: #334155;            /* neutral-700 */
+  --color-fg-muted: #64748b;              /* neutral-500 */
+  --color-fg-subtle: #94a3b8;             /* neutral-400 */
+
+  /* surfaces */
+  --color-canvas-default: rgba(255, 255, 255, 0.55);
+  --color-canvas-subtle: rgba(241, 245, 249, 0.6);   /* neutral-100 */
+  --color-canvas-inset: rgba(241, 245, 249, 0.6);
+  --color-canvas-overlay: #ffffff;                    /* popovers stay solid */
+
+  /* borders */
+  --color-border-default: #cbd5e1;        /* neutral-300 */
+  --color-border-muted: #e2e8f0;          /* neutral-200 */
+  --color-neutral-muted: rgba(148, 163, 184, 0.2);
+
+  /* accent = Blowfish primary (blue) */
+  --color-accent-fg: #2563eb;             /* primary-600 */
+  --color-accent-emphasis: #2563eb;
+  --color-accent-muted: rgba(96, 165, 250, 0.4);
+  --color-accent-subtle: #eff6ff;         /* primary-50 */
+
+  /* buttons */
+  --color-btn-text: #334155;
+  --color-btn-bg: rgba(241, 245, 249, 0.8);
+  --color-btn-border: #cbd5e1;
+  --color-btn-hover-bg: #e2e8f0;
+  --color-btn-hover-border: #cbd5e1;
+  --color-btn-active-bg: #cbd5e1;
+  --color-btn-active-border: #94a3b8;
+  --color-btn-selected-bg: #e2e8f0;
+  --color-btn-primary-text: #ffffff;
+  --color-btn-primary-bg: #2563eb;
+  --color-btn-primary-border: transparent;
+  --color-btn-primary-hover-bg: #1d4ed8;
+  --color-btn-primary-hover-border: transparent;
+  --color-btn-primary-selected-bg: #1e40af;
+  --color-btn-primary-disabled-text: rgba(255, 255, 255, 0.85);
+  --color-btn-primary-disabled-bg: #93c5fd;
+  --color-btn-primary-disabled-border: transparent;
+
+  --color-segmented-control-bg: #e2e8f0;
+  --color-segmented-control-button-bg: #ffffff;
+  --color-segmented-control-button-selected-border: #94a3b8;
+  --color-action-list-item-default-hover-bg: rgba(203, 213, 225, 0.4);
+
+  /* reactions */
+  --color-scale-gray-1: #e2e8f0;
+  --color-scale-blue-1: #bfdbfe;
+
+  background: transparent;
+}
