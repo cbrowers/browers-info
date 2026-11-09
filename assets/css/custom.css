@@ -38,3 +38,33 @@ html.dark body::before {
     url("/img/bg/glass-dark.jpg") type("image/jpeg")
   );
 }
+
+/*
+ * Readability panel: tinted, semi-transparent "glass" behind the content
+ * wrapper (main content + footer), extending a few px beyond it.
+ * Tweak here: --panel-bleed (extra width around the content),
+ * --panel-opacity-* (0 = transparent, 1 = solid), --panel-blur.
+ */
+:root {
+  --panel-bleed: 8px;
+  --panel-radius: 12px;
+  --panel-blur: 6px;
+  --panel-opacity-light: 0.78;
+  --panel-opacity-dark: 0.8;
+}
+
+body > div:has(> #main-content)::before {
+  content: "";
+  position: absolute;
+  inset: calc(-1 * var(--panel-bleed));
+  z-index: -1;
+  pointer-events: none;
+  border-radius: var(--panel-radius);
+  background-color: rgba(var(--color-neutral), var(--panel-opacity-light));
+  -webkit-backdrop-filter: blur(var(--panel-blur));
+  backdrop-filter: blur(var(--panel-blur));
+}
+
+html.dark body > div:has(> #main-content)::before {
+  background-color: rgba(var(--color-neutral-800), var(--panel-opacity-dark));
+}
