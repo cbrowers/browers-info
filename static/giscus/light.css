@@ -56,3 +56,6 @@ main {
 
   background: transparent;
 }
+
+/* Hide the "– powered by giscus" note next to the comment count (MIT licence, no attribution required). */
+.gsc-left-header > em { display: none; }
